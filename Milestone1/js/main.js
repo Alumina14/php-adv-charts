@@ -15,36 +15,25 @@ function getData(){
     method: 'get',
     success: function(data){
 
-      console.log(data);
+      // inizio chart
 
-      for (var key in data) {
+      var ctx = $('#myChart');
+      var chart = new Chart(ctx, {
 
-        var outputData = data[key];
-        console.log(outputData);
+          type: 'line',
 
-        // inizio chart
+          data: {
+              labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+              datasets: [{
+                  label: 'Milestone 1',
+                  backgroundColor: 'rgb(97, 225, 0)',
+                  borderColor: 'rgb(116, 255, 9)',
+                  data: data,
+              }]
+          },
 
-        var ctx = $('#myChart');
-        var chart = new Chart(ctx, {
-
-            type: 'line',
-
-            data: {
-                labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
-                datasets: [{
-                    label: 'Milestone 1',
-                    backgroundColor: 'rgb(97, 225, 0)',
-                    borderColor: 'rgb(116, 255, 9)',
-                    data: data,
-                }]
-            },
-
-            options: {}
-        });
-
-      };
-
-
+          options: {}
+      });
     },
 
     error: function(err){
